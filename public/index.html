@@ -13,14 +13,18 @@
     });
     // when you get a receiveSerial event, do this
     socket.on('receiveSerial', function(data) {
-      // look for the textDisplay element in the HTML below:
-      var element = document.getElementById('modbusDisplay');
-      console.log(data); //Check the console in chrome tools to see this
-      $("#serialDisplay").val(data);
-      $("#frequency").val(data.split(" ")[2]);
-      // set the stuff inside the element's HTML tags to
-      // whatever the 'value' property of the received data is:
-    });
+          // look for the textDisplay element in the HTML below:
+          var element = document.getElementById('modbusDisplay');
+          console.log(data); //Check the console in chrome tools to see this
+          $("#serialDisplay").val(data);
+          if (val(data.indexOf("RF") >= 0) {
+              freq = data.substring(str.indexOf("RF") + 1);
+              $("#frequency").val(freq.split(" ")[0]);
+            };
+            //$("#frequency").val(data.split(" ")[2]);
+            // set the stuff inside the element's HTML tags to
+            // whatever the 'value' property of the received data is:
+          });
   </script>
 
   <h2> Send command to receiver</h2>
