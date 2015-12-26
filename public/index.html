@@ -1,0 +1,46 @@
+<html>
+
+<title>Scanner serial comms client</title>
+
+<head>
+  <script src="js/socket.io-client.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <script type="text/javascript">
+    var socket = io.connect();
+    socket.on('connected', function(data) {
+      console.log('Connected, this is what I received : ');
+    });
+    // when you get a receiveSerial event, do this
+    socket.on('receiveSerial', function(data) {
+      // look for the textDisplay element in the HTML below:
+      var element = document.getElementById('modbusDisplay');
+      console.log(data); //Check the console in chrome tools to see this
+      $("#serialDisplay").val(data);
+      // set the stuff inside the element's HTML tags to
+      // whatever the 'value' property of the received data is:
+    });
+  </script>
+
+  <h2> Send command to receiver</h2>
+
+  <input id="send" type="submit" value="Send" />
+  <input id="serialString" value="" />
+  <label for="serialString">Command:</label>
+
+  <h2> Message from receiver:</h2>
+  <input disabled="disabled" id="serialDisplay" value="Text will appear here.." />
+  <script>
+    $("#send").click(function(event) {
+      event.preventDefault();
+      var element = document.getElementById('serialString');
+      socket.emit("sendSerial", element.value);
+    });
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+</body>
+
+</html>

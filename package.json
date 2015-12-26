@@ -1,0 +1,16 @@
+{
+  "name": "scanner-on-web",
+  "version": "1.0.0",
+  "description": "ideas from: http://samselectronicsprojects.blogspot.com.au/2012/11/nodejs-raspberry-pi-serial.html",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "serialport": "*",
+    "socket.io": "*"
+  }
+}

@@ -1,0 +1,60 @@
+body {
+    background-color: black;
+    color: #0F0;
+    font-family: verdana;
+}
+
+body input,
+body label {
+    display: block;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+input {
+    outline: none;
+    width: 70%;
+    background-color: black;
+    color: #0F0;
+    padding: 1em .5em;
+    display: block;
+    font-size: 1em;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+#serialString {
+    display:inline-block;
+}
+
+
+#send {
+    display:inline-block;
+    width: 10%;
+    float: right;
+}
+
+label {
+    display: inline-block;
+    padding: 1em .5em;
+    font-size: 1em;
+    float: left;
+    text-align: left;
+    width: 10%;
+}
+
+div.messages {
+    margin-left: 1em;
+}
+
+iwasform {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
