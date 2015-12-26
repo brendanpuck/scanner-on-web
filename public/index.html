@@ -17,7 +17,7 @@
           var element = document.getElementById('modbusDisplay');
           console.log(data); //Check the console in chrome tools to see this
           $("#serialDisplay").val(data);
-          if (val(data.indexOf("RF") >= 0) {
+          if (val(data.indexOf("RF") >= 0)) {
               freq = data.substring(str.indexOf("RF") + 1);
               $("#frequency").val(freq.split(" ")[0]);
             };
