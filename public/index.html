@@ -17,6 +17,7 @@
       var element = document.getElementById('modbusDisplay');
       console.log(data); //Check the console in chrome tools to see this
       $("#serialDisplay").val(data);
+      $("#frequency").val(data.split(" ")[2]);
       // set the stuff inside the element's HTML tags to
       // whatever the 'value' property of the received data is:
     });
@@ -30,6 +31,8 @@
 
   <h2> Message from receiver:</h2>
   <input disabled="disabled" id="serialDisplay" value="Text will appear here.." />
+  <input disabled="disabled" id="frequency" value="Text will appear here.." />
+  <label for="frequency">Frequency:</label>
   <script>
     $("#send").click(function(event) {
       event.preventDefault();
