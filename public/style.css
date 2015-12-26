@@ -6,7 +6,7 @@ body {
 
 body input,
 body label {
-    display: block;
+    display: inline-block;
 }
 
 h1 {
@@ -27,11 +27,6 @@ input {
     -ms-flex-positive: 1;
     flex-grow: 1;
 }
-
-#serialString {
-    display:inline-block;
-}
-
 
 #send {
     display:inline-block;
