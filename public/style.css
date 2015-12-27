@@ -36,7 +36,7 @@ input {
 
 label {
     display: inline-block;
-    padding: 1em .5em;
+    padding: .5em .5em;
     font-size: 1em;
     float: left;
     text-align: left;
