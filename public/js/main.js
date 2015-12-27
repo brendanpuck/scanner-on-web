@@ -1,31 +1,39 @@
+    var socket = io.connect();
+    socket.on('connected', function(data) {
+      console.log('Connected, this is what I received : ');
+    });
+    // when you get a receiveSerial event, do this
+    socket.on('receiveSerial', function(data) {
+      console.log(data);
 
-var socket = io("http://localhost:3000");
+      $("#serialDisplay").val(data);
 
-socket.on("disconnect", function() {
-	setTitle("Disconnected");
-});
+      //Split out RF data
+      if (data.indexOf("RF") >= 0) {
+        freq = data.substring(data.indexOf("RF") + 2);
+        $("#frequency").val(freq.split(" ")[0]);
+      };
 
-socket.on("connect", function() {
-	setTitle("Connected to Cyber Chat");
-});
+      //Split out Level and Mute data
+      if (data.indexOf("LM") >= 0) {
+        levelData = data.substring(data.indexOf("LM") + 2);
+        level = levelData.substring(0, 3);
+        mute = levelData.substring(3, 4);
+        $("#level").val(level.split(" ")[0] * -1);
+      }
 
-socket.on("message", function(message) {
-	printMessage(message);
-});
+      //Split out and determine receiver mode
+      if (data.indexOf("MD") >= 0) {
+        modeData = data.substring(data.indexOf("MD") + 2);
+        modeCode = modeData.split(" ")[0];
+        $("#mode").val(modeCode.split(" ")[0]);
+      }
 
-document.forms[0].onsubmit = function () {
-    var input = document.getElementById("message");
-    printMessage(input.value);
-    socket.emit("chat", input.value);
-    input.value = '';
-};
+      //Split out step rate
+      if (data.indexOf("ST") >= 0) {
+        step = data.substring(data.indexOf("ST") + 2);
+        $("#step").val(step.split(" ")[0]);
+      }
 
-function setTitle(title) {
-    document.querySelector("h1").innerHTML = title;
-}
 
-function printMessage(message) {
-    var p = document.createElement("p");
-    p.innerText = message;
-    document.querySelector("div.messages").appendChild(p);
-}
+    });

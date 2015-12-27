@@ -3,30 +3,10 @@
 <title>Scanner serial comms client</title>
 
 <head>
+  <script src="js/main.js"></script>
   <script src="js/socket.io-client.min.js"></script>
   <script src="http://code.jquery.com/jquery-latest.js"></script>
-
-  <script type="text/javascript">
-    var socket = io.connect();
-    socket.on('connected', function(data) {
-      console.log('Connected, this is what I received : ');
-    });
-    // when you get a receiveSerial event, do this
-    socket.on('receiveSerial', function(data) {
-          // look for the textDisplay element in the HTML below:
-          var element = document.getElementById('modbusDisplay');
-          console.log(data); //Check the console in chrome tools to see this
-          $("#serialDisplay").val(data);
-          if (data.indexOf("RF") >= 0) {
-              freq = data.substring(data.indexOf("RF") + 2);
-              $("#frequency").val(freq.split(" ")[0]);
-            };
-            //$("#frequency").val(data.split(" ")[2]);
-            // set the stuff inside the element's HTML tags to
-            // whatever the 'value' property of the received data is:
-          });
-  </script>
-
+  
   <h2> Send command to receiver</h2>
 
   <input id="send" type="submit" value="Send" />
@@ -36,7 +16,13 @@
   <h2> Message from receiver:</h2>
   <input disabled="disabled" id="serialDisplay" value="Text will appear here.." />
   <input disabled="disabled" id="frequency" value="Text will appear here.." />
-  <label for="frequency">Frequency:</label>
+  <label for="frequency">Frequency (MHz):</label>
+  <input disabled="disabled" id="level" value="Text will appear here.." />
+  <label for="level">Level:</label>
+  <input disabled="disabled" id="mode" value="Text will appear here.." />
+  <label for="mode">Mode:</label>
+  <input disabled="disabled" id="step" value="Text will appear here.." />
+  <label for="step">Step (kHz):</label>
   <script>
     $("#send").click(function(event) {
       event.preventDefault();
